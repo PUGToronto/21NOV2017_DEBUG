@@ -1,0 +1,22 @@
+def stream sUpdCust.
+
+def var vCustToUpd as char no-undo.
+def var vLastCustNum as int no-undo.
+
+
+input stream sUpdCust through value(search("quoter") + " " +
+                                    search("UpdCust.txt") ).
+repeat:
+import stream sUpdCust vCustToUpd.
+end.
+
+for last Customer no-lock
+by Customer.Cust-Num:
+  vLastCustNum = Customer.Cust-Num.
+end.
+
+for first Customer
+where Customer.Name = vCustToUpd:
+  Customer.Cust-Num = vLastCustNum + 1.
+end.  
+  

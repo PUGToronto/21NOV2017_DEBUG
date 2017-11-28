@@ -1,0 +1,10 @@
+def var vMinOwedLimit as dec no-undo.
+def var vTotalOwed as dec no-undo.
+def var vCnt as int no-undo.
+
+def temp-table tt-Rpt no-undo
+field Cust-Name as char format "x(20)"
+field Total-Owed as dec 
+index Cust cust-name.
+
+ vMinOwedLimit = 10000.
